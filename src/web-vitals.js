@@ -5,7 +5,7 @@ const UID = (localStorage[KEY] =
   localStorage[KEY] || Math.random() + "." + Math.random());
 
 function onError(err) {
-  console.error("[web-vitals]", err); // eslint-disable-line no-console
+  console.error("[gatsby-plugin-web-vitals]", err); // eslint-disable-line no-console
 }
 
 function onDebug(label, payload) {
@@ -23,7 +23,7 @@ function encode(obj) {
   return str;
 }
 
-function sendToAnalytics(fullPath, metric, options) {
+function sendToAnalytics(metric, options) {
   const { name, delta, id, entries } = metric;
 
   if (!options.metrics.includes(name)) {
@@ -36,7 +36,8 @@ function sendToAnalytics(fullPath, metric, options) {
     el: id,
     // Google Analytics metrics must be integers, so the value is rounded.
     ev: parseInt(delta),
-    dp: fullPath,
+    dl: location.origin,
+    dp: location.pathname,
     ni: true,
   };
 
@@ -62,15 +63,13 @@ function sendToAnalytics(fullPath, metric, options) {
   }
 }
 
-export async function webVitals(fullPath, { options }) {
+export async function webVitals({ options }) {
   try {
-    if (options.trackingId) {
-      getFID((metric) => sendToAnalytics(fullPath, metric, options));
-      getTTFB((metric) => sendToAnalytics(fullPath, metric, options));
-      getLCP((metric) => sendToAnalytics(fullPath, metric, options));
-      getCLS((metric) => sendToAnalytics(fullPath, metric, options));
-      getFCP((metric) => sendToAnalytics(fullPath, metric, options));
-    }
+    getFID((metric) => sendToAnalytics(metric, options));
+    getTTFB((metric) => sendToAnalytics(metric, options));
+    getLCP((metric) => sendToAnalytics(metric, options));
+    getCLS((metric) => sendToAnalytics(metric, options));
+    getFCP((metric) => sendToAnalytics(metric, options));
   } catch (err) {
     onError(err);
   }

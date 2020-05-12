@@ -21,18 +21,19 @@ or
   options: {
     // The Google Analytics property ID; the reporting code won't be generated without it
     trackingId: 'YOUR_GOOGLE_ANALYTICS_TRACKING_ID',
-    // Prints metrics in the console when true
-    debug: false,
     // An array with metrics you want to track and send to analytics
-    // By default all metrics are sending
     metrics: [`FID`, `TTFB`, `LCP`, `CLS`, `FCP`],
+    // Event Category (optional) { string }, default 'Web Vitals'
+    eventCategory: 'Performance',
     // Include Web Vitals tracking in development
     // Defaults to false meaning Vitals will only be tracked in production.
-    includeInDevelopment: false
+    includeInDevelopment: false,
+    // Prints metrics in the console when true
+    debug: false,
   }
 }
 ```
 
 ---
 
-Plugin inspired by [`nuxt-vitals`](https://github.com/daliborgogic/nuxt-vitals).
+Plugin based on [`nuxt-vitals`](https://github.com/daliborgogic/nuxt-vitals).

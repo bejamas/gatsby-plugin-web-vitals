@@ -5,6 +5,7 @@ export const onClientEntry = (_, pluginOptions = {}) => {
     trackingId: undefined,
     includeInDevelopment: false,
     debug: false,
+    eventCategory: `Web Vitals`,
     metrics: [`FID`, `TTFB`, `LCP`, `CLS`, `FCP`],
     ...pluginOptions,
   };
@@ -14,6 +15,6 @@ export const onClientEntry = (_, pluginOptions = {}) => {
   }
 
   if (options.includeInDevelopment || process.env.NODE_ENV === `production`) {
-    webVitals(location.href, { options });
+    webVitals({ options });
   }
 };
