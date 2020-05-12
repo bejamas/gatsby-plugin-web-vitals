@@ -1,0 +1,31 @@
+{
+  "name": "gatsby-plugin-web-vitals",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "babel src --out-dir . --ignore \"**/__tests__\"",
+    "prepare": "cross-env NODE_ENV=production npm run build",
+    "watch": "babel -w src --out-dir . --ignore \"**/__tests__\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bejamas/gatsby-plugin-web-vitals.git"
+  },
+  "author": "Thom Krupa <thom@bejamas.io>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bejamas/gatsby-plugin-web-vitals/issues"
+  },
+  "homepage": "https://github.com/bejamas/gatsby-plugin-web-vitals#readme",
+  "dependencies": {
+    "@babel/runtime": "^7.9.6",
+    "web-vitals": "^0.2.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.9.6",
+    "babel-preset-gatsby-package": "^0.4.1",
+    "cross-env": "^7.0.2"
+  }
+}
