@@ -22,7 +22,7 @@ or
     // The Google Analytics property ID; the reporting code won't be generated without it
     trackingId: 'YOUR_GOOGLE_ANALYTICS_TRACKING_ID',
     // Prints metrics in the console when true
-    debug: true,
+    debug: false,
     // An array with metrics you want to track and send to analytics
     // By default all metrics are sending
     metrics: [`FID`, `TTFB`, `LCP`, `CLS`, `FCP`],
