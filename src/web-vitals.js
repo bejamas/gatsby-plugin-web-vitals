@@ -36,7 +36,7 @@ function sendToAnalytics(metric, options) {
     el: id,
     // Google Analytics metrics must be integers, so the value is rounded.
     ev: parseInt(delta),
-    dl: location.origin,
+    dl: location.href,
     dp: location.pathname,
     ni: true,
   };
