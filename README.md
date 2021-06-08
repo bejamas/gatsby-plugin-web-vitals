@@ -34,6 +34,13 @@ or
 }
 ```
 
+## Important note
+
+Because Google Analytics metrics must be integers, all event values are rounded
+before being sent. To be meaningful, CLS values are also multiplied by 1000.
+This is the approach recommended in the [Web Vitals documentation](https://github.com/GoogleChrome/web-vitals#send-the-results-to-google-analytics) and will be
+important to keep in mind when preparing your reports.
+
 ---
 
 Plugin based on [`nuxt-vitals`](https://github.com/daliborgogic/nuxt-vitals).
