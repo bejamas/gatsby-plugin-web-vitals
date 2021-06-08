@@ -35,7 +35,8 @@ function sendToAnalytics(metric, options) {
     ea: name,
     el: id,
     // Google Analytics metrics must be integers, so the value is rounded.
-    ev: parseInt(delta),
+    // For CLS the value is first multiplied by 1000 for greater precision.
+    ev: Math.round(name === 'CLS' ? delta * 1000 : delta),
     dl: location.href,
     dp: location.pathname,
     ni: true,
@@ -52,6 +53,7 @@ function sendToAnalytics(metric, options) {
   const url = encode(obj);
 
   if (options.debug) {
+    onDebug(name + " original value", delta);
     onDebug(name, JSON.stringify(obj, null, 2));
     onDebug(name + " URL", url);
   }
